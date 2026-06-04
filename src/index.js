@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express';
+import { matchesRouter } from './routes/matches.js';
 
 const app = express();
 const PORT = 8000;
@@ -6,9 +7,11 @@ const PORT = 8000;
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello from Express servers!');
+  res.send('Hello from Express server!');
 });
 
+app.use('/matches', matchesRouter);
+
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
